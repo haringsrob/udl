@@ -10,6 +10,8 @@ This is a hobby project, I am not super familiar with rust yet, all suggestions 
 
 ## Language implementations
 
+[php](https://github.com/haringsrob/pdl)
+
 ## Expected format
 
 UDL listens by default on port 9337, you can specify a port by running `udl 1337` for example.
