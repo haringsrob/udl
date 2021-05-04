@@ -1,0 +1,39 @@
+name: Build-and-Test
+
+on: [push]
+
+jobs:
+  build-mac-intel:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build Release
+      run: |
+        cargo build --release
+        cargo build --release --target aarch64-apple-darwin
+    - uses: actions/upload-artifact@v2
+      with:
+        name: udl-mac-intel
+        path: ./target/release/udl
+    - uses: actions/upload-artifact@v2
+      with:
+        name: udl-mac-m1
+        path: ./target/aarch64-apple-darwin/udl
+
+  build-linux:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build Release
+      run: |
+        cargo build --release
+    - uses: actions/upload-artifact@v2
+      with:
+        name: udl-linux-intel
+        path: ./target/release/udl
