@@ -10,21 +10,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Add target m1
-      run: rustup target add aarch64-apple-darwin
-
     - name: Build Release
       run: |
         cargo build --release
-        cargo build --release --target aarch64-apple-darwin
     - uses: actions/upload-artifact@v2
       with:
         name: udl-mac-intel
         path: ./target/release/udl
-    - uses: actions/upload-artifact@v2
-      with:
-        name: udl-mac-m1
-        path: ./target/aarch64-apple-darwin/udl
 
   build-linux:
 
