@@ -3,12 +3,15 @@ name: Build-and-Test
 on: [push]
 
 jobs:
-  build-mac-intel:
+  build-mac:
 
     runs-on: macos-latest
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Add target m1
+      run: rustup target add aarch64-apple-darwin
 
     - name: Build Release
       run: |
